@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'RegisterPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,24 +20,13 @@ class _MyAppState extends State<MyApp>{
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Login Screen")
+          title: Text("Login")
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.center,
         
           children: [
-            Text("Login",
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.deepPurple,
-              fontWeight: FontWeight.bold
-            ),
-            ),
-            //TextField(keyboardType: TextInputType.emailAddress,)
-
-            SizedBox(height: 30),
-
             Padding(
               padding: const EdgeInsets.symmetric(),
               child: Form(
@@ -45,7 +35,7 @@ class _MyAppState extends State<MyApp>{
                     Container(
                       alignment: Alignment.centerLeft, // Align text to the left
                       padding: EdgeInsets.only(left: 20.0), // Optional: Add some padding from the left
-                      child: Text("Email or phone number",
+                      child: Text("Email or Phone number",
                       style: TextStyle(
                         fontFamily: 'Calibri',
                         fontWeight: FontWeight.bold,
@@ -111,23 +101,56 @@ class _MyAppState extends State<MyApp>{
                     Text("Forget Password?",
                     style: TextStyle(color: Colors.grey),
                     ),
+                  
+                  SizedBox(height: 10),
 
-                    SizedBox(height: 10),
-                   Container(
-                    height: 50,
-                    margin: EdgeInsets.symmetric(horizontal: 130),
-                    decoration: BoxDecoration(
+                   ElevatedButton(
+                    onPressed: () {
+                      
+                   },
+                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepPurple,
+                      shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
-                      color: Colors.deepPurple
+                      
+                       ),
                       ),
-                      child: Center(
-                        child: Text("Login", 
-                        style: TextStyle(
-                          color: Colors.white, 
-                          fontSize: 17, 
-                          fontWeight: FontWeight.bold),
-                        )
+                      
+                    child: const Text("Login", style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white
+                    ),),
+                   ),
+
+                   SizedBox(height: 30),
+
+                   Text("New User?", style: TextStyle(
+                      color: Colors.black,
+                    ),
+                   ),
+                  SizedBox(height: 5),
+
+                   ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const RegisterPage(),
+                    )
+                      );
+                   },
+                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepPurple,
+                      shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      
+                       ),
                       ),
+                    child: const Text("Register", style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white
+                    ),),
                    ),
                   ],
                )
@@ -135,12 +158,7 @@ class _MyAppState extends State<MyApp>{
             )
           ],
         ),
-    ),
+    )
     );
   }
 }
-
-
-
-
-
