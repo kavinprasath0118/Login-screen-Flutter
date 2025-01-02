@@ -1,8 +1,19 @@
+import 'package:first_app/ForgotPassword.dart';
+import 'HomePage.dart';
 import 'package:flutter/material.dart';
 import 'RegisterPage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp1());
+}
+
+class MyApp1 extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyApp()
+    );
+  }
 }
 
 class MyApp extends StatefulWidget {
@@ -20,7 +31,13 @@ class _MyAppState extends State<MyApp>{
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Login")
+          backgroundColor: Colors.deepPurple,
+          foregroundColor: Colors.white,
+          title: Text("Login",
+          style: TextStyle(
+            fontWeight: FontWeight.bold
+            ),
+          )
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -42,7 +59,8 @@ class _MyAppState extends State<MyApp>{
                         ),
                        ),
                       ),
-
+                    
+                    //Email Text Filed
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                       child: TextFormField(
@@ -50,6 +68,8 @@ class _MyAppState extends State<MyApp>{
                         decoration: InputDecoration(
                           hintText: 'Type here..',
                           border: OutlineInputBorder(),
+                          prefixIcon: Icon(Icons.email),
+                          //suffixIcon: Icon(Icons.email)
                         ),
                       
                         onChanged: (String value){
@@ -74,16 +94,19 @@ class _MyAppState extends State<MyApp>{
                        ),
                       ),
                     
+                    //Password Text Field
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                       child: Column(
                         children: [
                           TextFormField(
-                            keyboardType: TextInputType.emailAddress,
                             obscureText: true,
                             decoration: InputDecoration(
                               hintText: 'Type here..',
                               border: OutlineInputBorder(),
+                              prefixIcon: Icon(
+                                Icons.lock
+                              )
                             ),
                             
                             onChanged: (String value){
@@ -98,24 +121,34 @@ class _MyAppState extends State<MyApp>{
                     ),
                     
                     SizedBox(height: 30),
-                    Text("Forget Password?",
-                    style: TextStyle(color: Colors.grey),
+                    
+                    //TextButton
+                    TextButton(
+                      onPressed: () { 
+                        Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ForgotPassword(),
+                        )
+                      ); },
+                    child: Text("Forgot Password?")
                     ),
-                  
+
                   SizedBox(height: 10),
 
                    ElevatedButton(
                     onPressed: () {
-                      
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => Homepage()
+                        )
+                      );
                    },
                    style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.deepPurple,
                       shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
-                      
                        ),
                       ),
-                      
                     child: const Text("Login", style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
