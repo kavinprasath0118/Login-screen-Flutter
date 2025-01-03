@@ -1,5 +1,5 @@
-import 'package:first_app/ForgotPassword.dart';
 import 'HomePage.dart';
+import 'ForgotPassword.dart';
 import 'package:flutter/material.dart';
 import 'RegisterPage.dart';
 
@@ -8,6 +8,8 @@ void main() {
 }
 
 class MyApp1 extends StatelessWidget{
+  const MyApp1({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,6 +27,30 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp>{
+
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
+
+  bool _isPasswordVisible = false;
+
+  void _navigateToHomePage(BuildContext context){
+
+    final email = emailController.text.trim();
+    final password = passController.text.trim();
+
+    if(email.isNotEmpty && password.isNotEmpty){
+      Navigator.push(
+        context, 
+        MaterialPageRoute(builder: (context) => HomePage(email: email, password: password),
+        ),
+      );
+    }
+    else{
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please enter Email and Password")),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +90,7 @@ class _MyAppState extends State<MyApp>{
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                       child: TextFormField(
+                        controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           hintText: 'Type here..',
@@ -76,7 +103,10 @@ class _MyAppState extends State<MyApp>{
                                     
                         },
                         validator: (value){
-                           return value!.isEmpty ? "Please enter email" : null;
+                          if (value == null || value.isEmpty) {
+                            return "Please enter your email";
+                         }
+                          return null;
                         },
                       ),
                     ),
@@ -100,18 +130,24 @@ class _MyAppState extends State<MyApp>{
                       child: Column(
                         children: [
                           TextFormField(
-                            obscureText: true,
+                            controller: passController,
+                            obscureText: !_isPasswordVisible,
                             decoration: InputDecoration(
                               hintText: 'Type here..',
                               border: OutlineInputBorder(),
                               prefixIcon: Icon(
                                 Icons.lock
-                              )
-                            ),
-                            
-                            onChanged: (String value){
-                                        
-                            },
+                              ),
+                              suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                                  ), onPressed: () { 
+                                        setState(() {
+                                          _isPasswordVisible = !_isPasswordVisible;
+                                        });
+                                    },
+                                  ),
+                                ),
                             validator: (value){
                                return value!.isEmpty ? "Please enter password" : null;
                             },
@@ -135,14 +171,9 @@ class _MyAppState extends State<MyApp>{
 
                   SizedBox(height: 10),
 
+                  //Login button
                    ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context, 
-                        MaterialPageRoute(builder: (context) => Homepage()
-                        )
-                      );
-                   },
+                    onPressed: () => _navigateToHomePage(context),
                    style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.deepPurple,
                       shape: RoundedRectangleBorder(
