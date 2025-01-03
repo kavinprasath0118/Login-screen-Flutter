@@ -1,174 +1,52 @@
-// import 'package:flutter/material.dart';
-
-// class HomePage extends StatelessWidget{
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("Your Details")
-//       ),
-//       body: Container(
-//        child:  Column(
-//           children: [
-//             Text("")
-//           ],
-//         )
-//       ),
-//     );
-
-//   }
-// }
-
 import 'package:flutter/material.dart';
 
-class Homepage extends StatelessWidget {
-  const Homepage({super.key});
+class HomePage extends StatelessWidget{
 
+  final String email;
+  final String password;
+
+  const HomePage({super.key, required this.email, required this.password});
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        centerTitle: false,
-        elevation: 0,
-        backgroundColor: const Color(0xFF00BF6D),
-        foregroundColor: Colors.white,
-        title: const Text("Profile"),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings_outlined),
-            onPressed: () {},
-          )
-        ],
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      appBar: AppBar(title: const Text('User Details')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const ProfilePic(image: "https://i.postimg.cc/cCsYDjvj/user-2.png"),
-            Text(
-              "Annette Black",
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const Divider(height: 16.0 * 2),
-            const Info(
-              infoKey: "User ID",
-              info: "@annette.me",
-            ),
-            const Info(
-              infoKey: "Location",
-              info: "New York, NYC",
-            ),
-            const Info(
-              infoKey: "Phone",
-              info: "(239) 555-0108",
-            ),
-            const Info(
-              infoKey: "Email Address",
-              info: "demo@mail.com",
-            ),
-            const SizedBox(height: 16.0),
-            Align(
-              alignment: Alignment.centerRight,
-              child: SizedBox(
-                width: 160,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF00BF6D),
-                    foregroundColor: Colors.white,
-                    minimumSize: const Size(double.infinity, 48),
-                    shape: const StadiumBorder(),
-                  ),
-                  onPressed: () {},
-                  child: const Text("Edit profile"),
+
+            Card(
+              margin: const EdgeInsets.symmetric(vertical: 8),
+              child: ListTile(
+                leading: const Icon(Icons.email),
+                title: const Text('Email',
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
+                subtitle:  Text('$email'),
               ),
+            ),
+
+            const SizedBox(height: 16),
+
+           Card(
+            margin: const EdgeInsets.symmetric(vertical: 8),
+            child: ListTile(
+              leading: Icon(Icons.lock),
+              title: Text("Password", style: TextStyle(fontWeight: FontWeight.bold),),
+              subtitle: Text('$password'),
+            ),
+           ),
+
+            const SizedBox(height: 24),
+
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Go Back'),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class ProfilePic extends StatelessWidget {
-  const ProfilePic({
-    super.key,
-    required this.image,
-    this.isShowPhotoUpload = false,
-    this.imageUploadBtnPress,
-  });
-
-  final String image;
-  final bool isShowPhotoUpload;
-  final VoidCallback? imageUploadBtnPress;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      margin: const EdgeInsets.symmetric(vertical: 16.0),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          color:
-              Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(0.08),
-        ),
-      ),
-      child: Stack(
-        alignment: Alignment.bottomRight,
-        children: [
-          CircleAvatar(
-            radius: 50,
-            backgroundImage: NetworkImage(image),
-          ),
-          InkWell(
-            onTap: imageUploadBtnPress,
-            child: CircleAvatar(
-              radius: 13,
-              backgroundColor: Theme.of(context).primaryColor,
-              child: const Icon(
-                Icons.add,
-                color: Colors.white,
-                size: 20,
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class Info extends StatelessWidget {
-  const Info({
-    super.key,
-    required this.infoKey,
-    required this.info,
-  });
-
-  final String infoKey, info;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            infoKey,
-            style: TextStyle(
-              color: Theme.of(context)
-                  .textTheme
-                  .bodyLarge!
-                  .color!
-                  .withOpacity(0.8),
-            ),
-          ),
-          Text(info),
-        ],
       ),
     );
   }
