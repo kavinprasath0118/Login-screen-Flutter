@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Homepage extends StatelessWidget{
+class ProfilePage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class Homepage extends StatelessWidget{
           Card(
             margin: EdgeInsets.symmetric(vertical: 8),
             child: ListTile(
-              leading: const Icon(Icons.phone),
+              leading: const Icon(Icons.code),
               title: Text("Skills", style: TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Text("Flutter"),
@@ -84,5 +84,4 @@ class Homepage extends StatelessWidget{
    );
   }
 }
-
 
