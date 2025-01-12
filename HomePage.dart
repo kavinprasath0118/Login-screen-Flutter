@@ -10,44 +10,131 @@ class HomePage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('User Details')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-
-            Card(
-              margin: const EdgeInsets.symmetric(vertical: 8),
-              child: ListTile(
-                leading: const Icon(Icons.email),
-                title: const Text('Email',
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                subtitle:  Text('$email'),
+      appBar: AppBar(title: Text('User: $email', style: TextStyle(
+        fontWeight: FontWeight.bold
+      ),), ),
+      body:
+            ListView(
+             children: [
+              Padding(
+              padding: EdgeInsets.all(12),
+              child: Container(
+                  height: 100,
+                  color: Colors.deepPurpleAccent,
+               ),
               ),
-            ),
 
-            const SizedBox(height: 16),
+              Padding(
+              padding: EdgeInsets.all(12),
+              child: Container(
+                  height: 100,
+                  color: Colors.deepPurpleAccent,
+               ),
+              ),
 
-           Card(
-            margin: const EdgeInsets.symmetric(vertical: 8),
-            child: ListTile(
-              leading: Icon(Icons.lock),
-              title: Text("Password", style: TextStyle(fontWeight: FontWeight.bold),),
-              subtitle: Text('$password'),
-            ),
-           ),
+              Padding(
+              padding: EdgeInsets.all(12),
+              child: Container(
+                  height: 100,
+                  color: Colors.deepPurpleAccent,
+               ),
+              ),
 
-            const SizedBox(height: 24),
+              Padding(
+              padding: EdgeInsets.all(12),
+              child: Container(
+                  height: 100,
+                  color: Colors.deepPurpleAccent,
+               ),
+              ),
 
-            ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Go Back'),
-            ),
-          ],
-        ),
-      ),
+              Padding(
+              padding: EdgeInsets.all(12),
+              child: Container(
+                  height: 100,
+                  color: Colors.deepPurpleAccent,
+               ),
+              ),
+
+              Padding(
+              padding: EdgeInsets.all(12),
+              child: Container(
+                  height: 100,
+                  color: Colors.deepPurpleAccent,
+               ),
+              ),
+
+              Padding(
+              padding: EdgeInsets.all(12),
+              child: Container(
+                  height: 100,
+                  color: Colors.deepPurpleAccent,
+               ),
+              ),
+
+              Padding(
+              padding: EdgeInsets.all(12),
+              child: Container(
+                  height: 100,
+                  color: Colors.deepPurpleAccent,
+               ),
+              ),
+
+              Padding(
+              padding: EdgeInsets.all(12),
+              child: Container(
+                  height: 100,
+                  color: Colors.deepPurpleAccent,
+               ),
+              ),
+
+              Padding(
+              padding: EdgeInsets.all(12),
+              child: Container(
+                  height: 100,
+                  color: Colors.deepPurpleAccent,
+               ),
+              ),
+
+              Padding(
+              padding: EdgeInsets.all(12),
+              child: Container(
+                  height: 100,
+                  color: Colors.deepPurpleAccent,
+               ),
+              ),
+             ],
+            )
+
+          //   Card(
+          //     margin: const EdgeInsets.symmetric(vertical: 8),
+          //     child: ListTile(
+          //       leading: const Icon(Icons.email),
+          //       title: const Text('Email',
+          //         style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          //       ),
+          //       subtitle:  Text('$email'),
+          //     ),
+          //   ),
+
+          //   const SizedBox(height: 16),
+
+          //  Card(
+          //   margin: const EdgeInsets.symmetric(vertical: 8),
+          //   child: ListTile(
+          //     leading: Icon(Icons.lock),
+          //     title: Text("Password", style: TextStyle(fontWeight: FontWeight.bold),),
+          //     subtitle: Text('$password'),
+          //   ),
+          //  ),
+
+            // const SizedBox(height: 24),
+
+            // ElevatedButton(
+            //   onPressed: () => Navigator.pop(context),
+            //   child: const Text('Go Back'),
+            // ),
+
     );
   }
 }
