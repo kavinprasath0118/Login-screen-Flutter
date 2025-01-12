@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:loginpage/ProfilePage.dart';
+// import 'package:loginpage/ProfilePage;
+// import 'HomePage.dart';
+import 'ProfilePage.dart';
 
 
 class RegisterPage extends StatelessWidget {
@@ -126,7 +128,7 @@ class RegisterPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => Homepage() 
+                  MaterialPageRoute(builder: (context) => ProfilePage()
                     )
                   ); 
               },
