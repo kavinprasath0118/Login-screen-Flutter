@@ -44,15 +44,15 @@ class ForgotPassword extends StatelessWidget{
           onPressed: () { 
             
            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.deepPurple,
-            ),
           child: Text("Submit",
                style: TextStyle(
                color: Colors.white,
                fontSize: 15,
                ),
              ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.deepPurple,
+            ),
           )
         ],
       ),
