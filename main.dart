@@ -2,6 +2,8 @@ import 'HomePage.dart';
 import 'ForgotPassword.dart';
 import 'package:flutter/material.dart';
 import 'RegisterPage.dart';
+import 'ListViewExample.dart';
+import 'ListViewBuilder.dart';
 
 void main() {
   runApp(MyApp1());
@@ -66,10 +68,12 @@ class _MyAppState extends State<MyApp>{
           )
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-        
           children: [
+            Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+          //mainAxisAlignment: MainAxisAlignment.start,
+          //crossAxisAlignment: CrossAxisAlignment.center,
+        
+         
             Padding(
               padding: const EdgeInsets.symmetric(),
               child: Form(
@@ -216,7 +220,57 @@ class _MyAppState extends State<MyApp>{
                       color: Colors.white
                     ),),
                    ),
-                  ],
+
+                   SizedBox(height: 20),
+
+                  //ListView
+                   ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ListViewExample(),
+                    )
+                      );
+                   },
+                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.indigo,
+                      shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      
+                       ),
+                      ),
+                    child: const Text("List View", style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white
+                    ),),
+                   ),
+
+                    SizedBox(height: 20,),
+
+                   //ListViewBuilder
+                   ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ListViewBuilder(),
+                    )
+                      );
+                   },
+                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.indigo,
+                      shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      
+                       ),
+                      ),
+                    child: const Text("List View Builder", style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white
+                    ),),
+                   ),
+                ],
                )
               ),
             )
